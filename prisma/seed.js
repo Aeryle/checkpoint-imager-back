@@ -48,7 +48,7 @@ async function main() {
   );
 
   users.forEach((user) => {
-    await prismaClient.user.update({
+    return prismaClient.user.update({
       where: {
         id: user.i,
       },
