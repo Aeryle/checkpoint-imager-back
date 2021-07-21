@@ -1,15 +1,15 @@
-version: '3.1'
+version: "3.8"
 services:
   postgres:
     image: postgres:13.3-alpine
     environment:
-      POSTGRES_USER: aeviso
-      POSTGRES_PASSWORD: aeviso
-      POSTGRES_DB: aeviso
+      POSTGRES_USER: imager
+      POSTGRES_PASSWORD: imager
+      POSTGRES_DB: imager
     volumes:
       - db-data:/var/lib/postgresql/data/
     ports:
-      - '5432:5432'
+      - 5432:5432
 
   adminer:
     image: adminer:latest
@@ -18,4 +18,4 @@ services:
       - 8080:8080
 
 volumes:
-  db-data: # named volumes can be managed easier using docker-compose
+  db-data:
