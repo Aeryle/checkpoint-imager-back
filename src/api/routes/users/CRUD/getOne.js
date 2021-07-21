@@ -1,7 +1,7 @@
 const prismaClient = require("../../../../prismaClient");
 
-module.exports = async (req, res, next) => {
-  const user = await prismaClient.user.findMany({
+module.exports = async (req, res) => {
+  const user = await prismaClient.user.findUnique({
     where: {
       id: req.params.id,
     },
