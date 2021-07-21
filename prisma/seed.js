@@ -9,7 +9,9 @@ async function main() {
         username: faker.internet.userName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
-        avatarURL: faker.internet.avatar(),
+        avatarURL: Math.round(Math.random())
+          ? faker.internet.avatar()
+          : undefined,
       };
 
       return prismaClient.user.create({ data: user });
@@ -28,35 +30,22 @@ async function main() {
     })
   );
 
-  const tags = await Promise.all(
+  await Promise.all(
     new Array(10).fill(undefined).map(() => {
       const tag = {
         name: faker.lorem.slug(),
         images: {
           connect: new Array(Math.floor(Math.random() * 3))
             .fill(undefined)
-            .map(() => {
-              return {
-                id: images[Math.floor(Math.random() * images.length)].id,
-              };
-            }),
+            .map(() => ({
+              id: images[Math.floor(Math.random() * images.length)].id,
+            })),
         },
       };
 
       return prismaClient.tag.create({ data: tag });
     })
   );
-
-  users.forEach((user) => {
-    return prismaClient.user.update({
-      where: {
-        id: user.i,
-      },
-      data: {
-        1: "",
-      },
-    });
-  });
 }
 
 main().finally(() => prismaClient.$disconnect());

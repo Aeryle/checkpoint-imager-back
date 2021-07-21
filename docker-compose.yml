@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.1"
 services:
   postgres:
     image: postgres:13.3-alpine
@@ -6,8 +6,6 @@ services:
       POSTGRES_USER: imager
       POSTGRES_PASSWORD: imager
       POSTGRES_DB: imager
-    volumes:
-      - db-data:/var/lib/postgresql/data/
     ports:
       - 5432:5432
 
