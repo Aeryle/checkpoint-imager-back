@@ -17,7 +17,14 @@ module.exports = {
     "no-unused-vars": "warn",
     "import/no-extraneous-dependencies": [
       "error",
-      { devDependencies: ["**/*.test.js", "**/*.spec.js", "**/seed.js"] },
+      {
+        devDependencies: [
+          "**/*.test.js",
+          "**/*.spec.js",
+          "**/seed.js",
+          "**/prismaClient.js",
+        ],
+      },
     ],
     "no-underscore-dangle": 0,
   },
