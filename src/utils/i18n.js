@@ -12,7 +12,7 @@
  * @param {CustomRequest} req Express' request object
  * @returns {string} The locale
  */
-const getLanguage = (req) => req.user?.language || "fr-FR";
+const getLanguage = (req) => req.user?.language || "en-US";
 
 module.exports = {
   getLanguage,
